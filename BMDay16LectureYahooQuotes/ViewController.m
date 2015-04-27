@@ -29,7 +29,7 @@
   //Create the Button
   UIButton *myButtonPressed = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   myButtonPressed.frame = CGRectMake(20, 180, 280, 40);
-  [myButtonPressed setTitle:@"Press me" forState:UIControlStateNormal];
+  [myButtonPressed setTitle:@"Get Quote" forState:UIControlStateNormal];
   [myButtonPressed addTarget:self action:@selector(getQuote) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:myButtonPressed];
 }
@@ -42,9 +42,16 @@
   //Create a URL
   NSURL *theUrl = [[NSURL alloc]initWithString:[quoteAddress stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
   NSURLRequest *theRequest = [[NSURLRequest alloc]initWithURL:theUrl];
+  NSURLResponse *theResponse = nil;
   
+  NSError *theError = nil;
+  //You are using the address for the reponse and error
+  NSData *data = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&theResponse error:&theError];
+  NSMutableString *contentString = [[NSMutableString alloc]initWithData:data encoding:NSUTF8StringEncoding];
   
-  NSLog(@"%@", quoteAddress);
+  NSArray *arrayData = [contentString componentsSeparatedByString:@","];
+  self.myLabel.text = [arrayData objectAtIndex:1];
+  NSLog(@"%@", contentString);
   
 }
 
