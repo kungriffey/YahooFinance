@@ -11,5 +11,12 @@
 @interface ViewController : UIViewController
 
 
+//UITextField
+@property (strong, nonatomic) UITextField *textField;
+//NSString
+@property (strong, nonatomic) NSString *quotes;
+//UILabel
+@property (strong, nonatomic) UILabel *myLabel;
+
 @end
 

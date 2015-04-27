@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
+  
+  self.textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 60, 280, 20)];
+  self.textField.text = @"Insert Text Here";
+  [self.view addSubview:self.textField];
+  
 }
 
 - (void)didReceiveMemoryWarning {
