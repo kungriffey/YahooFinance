@@ -21,6 +21,8 @@
   self.textField.text = @"AAPL";
   //disable Auto Correct
   self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+  //change the keyboard to Done
+  self.textField.returnKeyType = UIReturnKeyDone;
   [self.view addSubview:self.textField];
   
   //Create the Label
