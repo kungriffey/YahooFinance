@@ -44,7 +44,7 @@
 //Delegate Method to hide keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [self.textField resignFirstResponder];
-  
+  [self getQuote];
   return YES;
   
 }

@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString *quotes;
 //UILabel
 @property (strong, nonatomic) UILabel *myLabel;
+//Quote Method
+- (void)getQuote;
 
 @end
 
