@@ -66,6 +66,18 @@
   NSMutableString *contentString = [[NSMutableString alloc]initWithData:data encoding:NSUTF8StringEncoding];
   
   NSArray *arrayData = [contentString componentsSeparatedByString:@","];
+  //determine whether stock has gone up or down.
+  float current = [[arrayData objectAtIndex:1]floatValue];
+  float open = [[arrayData objectAtIndex:5]floatValue];
+  
+  if (current >= open) {
+    self.myLabel.textColor = [UIColor greenColor];
+    self.myLabel.text = [arrayData objectAtIndex:1];
+  } else {
+    self.myLabel.textColor = [UIColor redColor];
+    self.myLabel.text = [arrayData objectAtIndex:1];
+  }
+  
   self.myLabel.text = [arrayData objectAtIndex:1];
   NSLog(@"%@", contentString);
   
