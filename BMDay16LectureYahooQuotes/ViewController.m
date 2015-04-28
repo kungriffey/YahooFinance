@@ -16,14 +16,17 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+  //initializing textfield delegate
   self.textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 60, 280, 20)];
   self.textField.text = @"AAPL";
   //disable Auto Correct
   self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
   //change the keyboard to Done
   self.textField.returnKeyType = UIReturnKeyDone;
+  //make the keyboard disappear
   [self.view addSubview:self.textField];
+  self.textField.delegate = self;
+
   
   //Create the Label
   self.myLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 100, 280, 40)];
@@ -36,6 +39,14 @@
   [myButtonPressed setTitle:@"Get Quote" forState:UIControlStateNormal];
   [myButtonPressed addTarget:self action:@selector(getQuote) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:myButtonPressed];
+}
+
+//Delegate Method to hide keyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [self.textField resignFirstResponder];
+  
+  return YES;
+  
 }
 
 
