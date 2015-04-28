@@ -19,6 +19,8 @@
   
   self.textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 60, 280, 20)];
   self.textField.text = @"AAPL";
+  //disable Auto Correct
+  self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
   [self.view addSubview:self.textField];
   
   //Create the Label
@@ -37,6 +39,7 @@
 
 - (void)getQuote {
   
+  //stringWithFormat takes the argument in the textField and inserts it into the weblink at %@ location and saves the object as quoteAddress
   NSString *quoteAddress = [NSString stringWithFormat:@"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=sl1d1t1c1ohgv&e=.csv", self.textField.text];
   
   //Create a URL
